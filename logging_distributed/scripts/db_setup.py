@@ -1,0 +1,1 @@
+# Script para crear la base de datos y tablas

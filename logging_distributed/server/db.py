@@ -1,0 +1,1 @@
+# Funciones de conexión y operaciones en la base de datos

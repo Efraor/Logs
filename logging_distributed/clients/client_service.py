@@ -1,0 +1,1 @@
+# Script base de un cliente que genera y envía logs
