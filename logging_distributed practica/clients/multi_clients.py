@@ -1,0 +1,1 @@
+# Script para enviar logs simultáneamente desde varios clientes
