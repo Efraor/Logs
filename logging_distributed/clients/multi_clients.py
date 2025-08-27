@@ -20,7 +20,7 @@ def send_logs(service, num_logs):
             "timestamp": iso_now(),
             "service": service,
             "severity": random.choice(severities),
-            "message": f"log #{i} desde {service} - prubea {random.randint(100,1000)}"
+            "message": f"log #{i} desde {service} - prueba {random.randint(100,1000)}"
         }
         header = {
             "Content-Type": "application/json",
