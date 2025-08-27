@@ -1,5 +1,5 @@
 #
-import sqlite3, os
+import sqlite3
 
 DB_FILE = '../db/logs.db'
 conn = sqlite3.connect(DB_FILE)
