@@ -24,7 +24,7 @@ def send_logs(service, num_logs):
         }
         header = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {API_TOKEN}"
+            "Authorization": f"Token {API_TOKEN}"
         }
         try:
             r = requests.post(f"{SERVER}/logs", json=payload, headers=header, timeout=5)

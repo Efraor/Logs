@@ -6,6 +6,6 @@ API_TOKEN = "MiTokenSecreto123"
 
 def validate_token():
     token = request.headers.get("Authorization", "")
-    if not token or token.replace("Bearer ", "") != API_TOKEN:
+    if not token or token.replace("Token", "") != API_TOKEN:
         return jsonify({"error": "Unauthorized"}), 401
     return None
