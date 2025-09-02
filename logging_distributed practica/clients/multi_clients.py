@@ -8,7 +8,7 @@ API_TOKEN = "MiTokenSecreto123"
 
 services = ["Auth","payments","orders"]
 severities = ["INFO", "WARNING", "ERROR"]
-num_logs = 100 # Cantidad de logs por servicio
+num_logs = 300 # Cantidad de logs por servicio
 delay = (0.1, 0.5)  # intervalo aleatorio entre envíos
 
 def iso_now():
@@ -24,7 +24,7 @@ def send_logs(service, num_logs):
         }
         header = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {API_TOKEN}"
+            "Authorization": f"Token {API_TOKEN}"
         }
         try:
             r = requests.post(f"{SERVER}/logs", json=payload, headers=header, timeout=5)
