@@ -1,7 +1,7 @@
 # Servidor Flask principal
 
 from flask import Flask, request, jsonify
-from db import insert_log, geat_all_logs, get_logs_filtered
+from db import insert_log, get_logs_filtered
 from datetime import datetime, timezone
 from auth import validate_token
 
@@ -28,13 +28,9 @@ def add_log():
         message = data.get("message")
         timestamp = data.get("timestamp")  # <-- obtener timestamp del cliente
         
-        if not all([service, severity, message]):
+        if not all([service, severity, message, timestamp]):
             return jsonify({"error":"Missing fields"}), 400
         
-        # Si el cliente no envía timestamp, lo generamos
-        if not timestamp:
-            from datetime import datetime, timezone
-            timestamp = datetime.now(timezone.utc).isoformat()
         
         insert_log(timestamp, service, severity, message)
         

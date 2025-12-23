@@ -55,31 +55,6 @@ def insert_log(timestamp, service, severity, message):
     finally:
         conn.close()
 
-def geat_all_logs():
-    """Obtiene todos los logs"""
-    if not os.path.exists(DB_FILE):
-        return []
-    
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-    
-    cursor.execute('SELECT timestamp, service, severity, message FROM logs ORDER BY timestamp DESC')
-    rows = cursor.fetchall()
-    
-    conn.close()
-    
-    # Convertir a lista de diccionarios
-    logs = []
-    for row in rows:
-        logs.append({
-            'timestamp': row[0],
-            'service': row[1],
-            'severity': row[2],
-            'message': row[3]
-        })
-    
-    return logs
-
 def get_logs_filtered(service=None, severity=None, 
                     timestamp_start=None, timestamp_end=None, 
                     received_at_start=None, received_at_end=None):

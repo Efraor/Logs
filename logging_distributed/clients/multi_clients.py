@@ -1,15 +1,16 @@
 # Script para enviar logs simultáneamente desde varios clientes
 
-import requests, random, time, threading
+import requests, random, threading
 from datetime import datetime
 
 SERVER = "http://127.0.0.1:5000"
 API_TOKEN = "MiTokenSecreto123"
 
 services = ["Auth","payments","orders"]
-severities = ["INFO", "WARNING", "ERROR"]
+
+severities = ["INFO", "WARNING", "ERROR", "CRITICAL", "DEBUG"]
+
 num_logs = 100 # Cantidad de logs por servicio
-delay = (0.1, 0.5)  # intervalo aleatorio entre envíos
 
 def iso_now():
     return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
@@ -20,7 +21,7 @@ def send_logs(service, num_logs):
             "timestamp": iso_now(),
             "service": service,
             "severity": random.choice(severities),
-            "message": f"log #{i} desde {service} - prubea {random.randint(100,1000)}"
+            "message": f"log #{i} desde {service} - prueba {random.randint(100,1000)}"
         }
         header = {
             "Content-Type": "application/json",
